@@ -1,14 +1,15 @@
- from enum import Enum
- 
+from enum import Enum
+
+
 class PeriodType(Enum):
     WEEK = 432000
     DAY = 86400
-    SIX_HOUR = 21600,
-    HOUR = 3600,
-    FIFTEEN_MINUTE = 900,
-    FIVE_MINUTE = 300,
+    SIX_HOUR = 21600
+    HOUR = 3600
+    FIFTEEN_MINUTE = 900
+    FIVE_MINUTE = 300
     MINUTE = 60
-        
+
 
 class StockData:
     def __init__(self, ticker, date, period, open, close, high, low, volume, previous_close) -> None:
@@ -22,52 +23,51 @@ class StockData:
         self.volume = volume
         self.previous_close = previous_close
         self.signal = 0.0
-     
+
     def percent_period_change(self):
         if self.open == 0.0:
             return 0.0
-        
+
         return (self.close - self.open) / self.open
-    
+
     def percent_period_range(self):
         if self.low == 0.0:
             return 0.0
-        
+
         return (self.high - self.low) / self.low
-    
+
     def range(self):
         return self.high - self.low
-    
+
     def average(self):
         return (self.high + self.low + self.open + self.close) / 4.0
-    
+
     def percent_change_high_to_open(self):
         if self.open == 0.0:
             return 0.0
-        
+
         return (self.high - self.open) / self.open
-    
+
     def percent_change_high_from_previous_close(self):
         if self.previous_close == 0.0:
             return 0.0
-        
+
         return (self.high - self.previous_close) / self.previous_close
-    
+
     def percent_change_low_from_previous_close(self):
         if self.previous_close == 0.0:
             return 0.0
-        
-        return (self.low - self.previous_close) / self.previous_close 
-    
+
+        return (self.low - self.previous_close) / self.previous_close
+
     def percent_change_open_from_previous_close(self):
         if self.previous_close == 0.0:
             return 0.0
-        
-        return (self.open - self.previous_close) / self.previous_close 
-    
+
+        return (self.open - self.previous_close) / self.previous_close
+
     def percent_change_from_previous_close(self):
         if self.previous_close == 0.0:
             return 0.0
-        
-        return (self.close - self.previous_close) / self.previous_close 
-        
+
+        return (self.close - self.previous_close) / self.previous_close

@@ -6,4 +6,6 @@ service.initialize('C:/Stocks/td_config.json')
 
 service.authenticate()
 
-service.get_daily_stock_data('GNUS')
+data = service.get_daily_stock_data('GNUS')
+
+print(data)
