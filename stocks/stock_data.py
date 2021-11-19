@@ -1,3 +1,14 @@
+ from enum import Enum
+ 
+class PeriodType(Enum):
+    WEEK = 432000
+    DAY = 86400
+    SIX_HOUR = 21600,
+    HOUR = 3600,
+    FIFTEEN_MINUTE = 900,
+    FIVE_MINUTE = 300,
+    MINUTE = 60
+        
 
 class StockData:
     def __init__(self, ticker, date, period, open, close, high, low, volume, previous_close) -> None:
